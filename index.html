@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot A-Frame</title>
+    <meta name="description" content="Robot A-Frame">
+    <script src="aframe.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <a-assets>
+      <a-mixin id='red-metal' material="color: red; src: url(moon.png)"></a-mixin>
+      <a-mixin id='yellow-metal' material="color: #FFC65D; src: url(moon.png);"></a-mixin>
+      <a-mixin id='gray-metal' material="color: #999999; src: url(moon.png)"></a-mixin>
+    </a-assets>
+    <a-scene id='scene'>
+        <a-sky color="#ECECEC"></a-sky>
+      </a-scene>
+  </body>
+</html>

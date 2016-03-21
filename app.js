@@ -43,32 +43,24 @@ function createBody(inParent) {
       tube.setAttribute('color', '#00FF00');
       body.appendChild(tube);
 
-      var bodyBox = document.createElement('a-cube');
-      bodyBox.setAttribute('position', '0 8 0');
-      bodyBox.setAttribute('rotation', '0 0 0');
-      bodyBox.setAttribute('height', '8');
-      bodyBox.setAttribute('width', '7');
-      bodyBox.setAttribute('depth', '3');
-      bodyBox.setAttribute('color', '#888888');
-      bodyBox.setAttribute('material', 'src: url(./moon.jpg)');
+      var bodyBox = document.createElement('a-entity');
+      bodyBox.setAttribute('geometry', 'primitive: box; height: 8; width: 7; depth: 3');
+      bodyBox.setAttribute('position','0 8 0');
+      bodyBox.setAttribute('mixin', 'yellow-metal');
       body.appendChild(bodyBox);
 
-      var hips = document.createElement('a-cube');
+      var hips = document.createElement('a-entity');
+      hips.setAttribute('geometry', 'primitive: box; height: 3; width: 5; depth: 3');
       hips.setAttribute('position', '0 2 0');
       hips.setAttribute('rotation', '0 0 0');
-      hips.setAttribute('height', '3');
-      hips.setAttribute('width', '5');
-      hips.setAttribute('depth', '3');
-      hips.setAttribute('color', '#888888');
+      hips.setAttribute('mixin', 'gray-metal');
       body.appendChild(hips);
 
-      var belt = document.createElement('a-cube');
+      var belt = document.createElement('a-entity');
+      belt.setAttribute('geometry', 'primitive: box; height: 3; width: 4.3; depth: 2');
       belt.setAttribute('position', '0 4 0');
       belt.setAttribute('rotation', '0 0 0');
-      belt.setAttribute('height', '3');
-      belt.setAttribute('width', '4.3');
-      belt.setAttribute('depth', '2');
-      belt.setAttribute('color', '#FFC65D');
+      belt.setAttribute('mixin', 'yellow-metal');
       body.appendChild(belt);
 
 
@@ -80,13 +72,11 @@ function createTank(inParent, inName) {
       var tank = document.createElement('a-entity');
       tank.setAttribute('data-name', inName);
 
-      var cylinder = document.createElement('a-cylinder');
+      var cylinder = document.createElement('a-entity');
+      cylinder.setAttribute('geometry', 'primitive: cylinder; radius: 1; height: 6; depth: 1');
       cylinder.setAttribute('position', '0 0 0');
       cylinder.setAttribute('rotation', '0 0 0');
-      cylinder.setAttribute('radius', '1');
-      cylinder.setAttribute('height', '6');
-      cylinder.setAttribute('depth', '1');
-      cylinder.setAttribute('color', '#FFC65D');
+      cylinder.setAttribute('mixin', 'yellow-metal');
       tank.appendChild(cylinder);            
 
       var topSphere = document.createElement('a-sphere');
