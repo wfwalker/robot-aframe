@@ -79,11 +79,10 @@ function createTank(inParent, inName) {
       cylinder.setAttribute('mixin', 'yellow-metal');
       tank.appendChild(cylinder);            
 
-      var topSphere = document.createElement('a-sphere');
+      var topSphere = document.createElement('a-entity');
+      topSphere.setAttribute('geometry', 'primitive: sphere; radius: 1');
       topSphere.setAttribute('position', '0 3 0');
-      topSphere.setAttribute('rotation', '0 0 0');
-      topSphere.setAttribute('radius', '1');
-      topSphere.setAttribute('color', '#FFC65D');
+      topSphere.setAttribute('mixin', 'yellow-metal');
       tank.appendChild(topSphere);            
 
       var bottomSphere = document.createElement('a-sphere');
