@@ -46,7 +46,7 @@ function createBody(inParent) {
       var bodyBox = document.createElement('a-entity');
       bodyBox.setAttribute('geometry', 'primitive: box; height: 8; width: 7; depth: 3');
       bodyBox.setAttribute('position','0 8 0');
-      bodyBox.setAttribute('mixin', 'yellow-metal');
+      bodyBox.setAttribute('mixin', 'gray-metal');
       body.appendChild(bodyBox);
 
       var hips = document.createElement('a-entity');
@@ -74,8 +74,6 @@ function createTank(inParent, inName) {
 
       var cylinder = document.createElement('a-entity');
       cylinder.setAttribute('geometry', 'primitive: cylinder; radius: 1; height: 6; depth: 1');
-      cylinder.setAttribute('position', '0 0 0');
-      cylinder.setAttribute('rotation', '0 0 0');
       cylinder.setAttribute('mixin', 'yellow-metal');
       tank.appendChild(cylinder);            
 
@@ -85,27 +83,22 @@ function createTank(inParent, inName) {
       topSphere.setAttribute('mixin', 'yellow-metal');
       tank.appendChild(topSphere);            
 
-      var bottomSphere = document.createElement('a-sphere');
+      var bottomSphere = document.createElement('a-entity');
+      bottomSphere.setAttribute('geometry', 'primitive: sphere; radius: 1');
       bottomSphere.setAttribute('position', '0 -3 0');
-      bottomSphere.setAttribute('rotation', '0 0 0');
-      bottomSphere.setAttribute('radius', '1');
-      bottomSphere.setAttribute('color', '#FFC65D');
+      bottomSphere.setAttribute('mixin', 'yellow-metal');
       tank.appendChild(bottomSphere);            
 
-      var topTorus = document.createElement('a-cylinder');
+      var topTorus = document.createElement('a-entity');
+      topTorus.setAttribute('geometry', 'primitive: cylinder; radius: 1.1; height: 0.1');
       topTorus.setAttribute('position', '0 3 0');
-      topTorus.setAttribute('rotation', '0 0 0');
-      topTorus.setAttribute('radius', '1.1');
-      topTorus.setAttribute('height', '0.1');
-      topTorus.setAttribute('color', '#FF0000');
+      topTorus.setAttribute('mixin', 'red-metal');
       tank.appendChild(topTorus);            
 
       var bottomTorus = document.createElement('a-cylinder');
+      bottomTorus.setAttribute('geometry', 'primitive: cylinder; radius: 1.1; height: 0.1');
       bottomTorus.setAttribute('position', '0 -3 0');
-      bottomTorus.setAttribute('rotation', '0 0 0');
-      bottomTorus.setAttribute('radius', '1.1');
-      bottomTorus.setAttribute('height', '0.1');
-      bottomTorus.setAttribute('color', '#FF0000');
+      bottomTorus.setAttribute('mixin', 'red-metal');
       tank.appendChild(bottomTorus);            
 
       inParent.appendChild(tank);
@@ -115,14 +108,18 @@ function createEye(inParent, inName) {
       var eye = document.createElement('a-entity');
       eye.setAttribute('data-name', inName);
 
-      var socket = document.createElement('a-cylinder');
-      socket.setAttribute('position', '0 0 0');
+      var socket = document.createElement('a-entity');
+      socket.setAttribute('geometry', 'primitive: cylinder; radius: 0.5; height: 2');
       socket.setAttribute('rotation', '90 0 0');
-      socket.setAttribute('radius', 0.5);
-      socket.setAttribute('height', 2);
-      socket.setAttribute('color', '#FFC65D');
+      socket.setAttribute('mixin', 'yellow-metal');
       eye.appendChild(socket);   
 
+
+      var light = document.createElement('a-entity');
+      light.setAttribute('geometry', 'primitive: sphere; radius: 0.4');
+      light.setAttribute('position', '0 0 -1.13');
+      light.setAttribute('mixin', 'white-light');
+      eye.appendChild(light);
 
       // var light = this.createLight();
       // light.position.z = -11.3;
@@ -138,19 +135,14 @@ function createHead(inParent) {
       head.setAttribute('data-name', 'head');
 
       var skull = document.createElement('a-cylinder');
+      skull.setAttribute('geometry', 'primitive: cylinder; radius: 1.8; height: 2.5');
       skull.setAttribute('position', '0 2 0');
-      skull.setAttribute('rotation', '0 0 0');
-      skull.setAttribute('radius', 1.8);
-      skull.setAttribute('height', 2.5);
-      skull.setAttribute('color', '#FF0000');
+      skull.setAttribute('mixin', 'red-metal');
       head.appendChild(skull);   
 
-      var neck = document.createElement('a-cylinder');
-      neck.setAttribute('position', '0 0 0');
-      neck.setAttribute('rotation', '0 0 0');
-      neck.setAttribute('radius', 1);
-      neck.setAttribute('height', 1);
-      neck.setAttribute('color', '#FFC65D');
+      var neck = document.createElement('a-entity');
+      neck.setAttribute('geometry', 'primitive: cylinder; radius: 1; height: 1');
+      neck.setAttribute('mixin', 'yellow-metal');
       head.appendChild(neck);   
 
       var lefteye = createEye(head, 'left-eye');
@@ -169,12 +161,10 @@ function createShinJet(inParent, inName) {
       var shinjet = document.createElement('a-entity');
       shinjet.setAttribute('data-name', inName);
 
-      var tube = document.createElement('a-cylinder');
+      var tube = document.createElement('a-entity');
+      tube.setAttribute('geometry', 'primitive: cylinder; radius: 1.5; height: 6');
       tube.setAttribute('position', '0 5 0');
-      tube.setAttribute('rotation', '0 0 0');
-      tube.setAttribute('radius', 1.5);
-      tube.setAttribute('height', 6);
-      tube.setAttribute('color', '#FF0000');
+      tube.setAttribute('mixin', 'red-metal');
       shinjet.appendChild(tube);            
 
       // var light = this.createFlare();
@@ -194,20 +184,14 @@ function createLimbJoint(inParent, inName, inRadius, inThickness) {
       var joint = document.createElement('a-entity');
       joint.setAttribute('data-name', inName);
 
-      var outerCylinder = document.createElement('a-cylinder');
-      outerCylinder.setAttribute('position', '0 0 0');
-      outerCylinder.setAttribute('rotation', '0 0 0');
-      outerCylinder.setAttribute('radius', inRadius);
-      outerCylinder.setAttribute('height', inThickness);
-      outerCylinder.setAttribute('color', '#FFC65D');
+      var outerCylinder = document.createElement('a-entity');
+      outerCylinder.setAttribute('geometry', 'primitive: cylinder; radius: ' + inRadius + '; height: ' + inThickness);
+      outerCylinder.setAttribute('mixin', 'yellow-metal');
       joint.appendChild(outerCylinder);            
 
-      var innerCylinder = document.createElement('a-cylinder');
-      innerCylinder.setAttribute('position', '0 0 0');
-      innerCylinder.setAttribute('rotation', '0 0 0');
-      innerCylinder.setAttribute('radius', inRadius * 0.5);
-      innerCylinder.setAttribute('height', inThickness + 0.2);
-      innerCylinder.setAttribute('color', '#FF0000');
+      var innerCylinder = document.createElement('a-entity');
+      innerCylinder.setAttribute('geometry', 'primitive: cylinder; radius: ' + (inRadius * 0.5) + '; height: ' + (inThickness + 0.2));
+      innerCylinder.setAttribute('mixin', 'red-metal');
       joint.appendChild(innerCylinder);          
 
       joint.setAttribute('rotation', '90 0 90');
@@ -220,20 +204,17 @@ function createLimbSegment(inParent, inName, length, thickness) {
       var segment = document.createElement('a-entity');
       segment.setAttribute('data-name', inName);
 
-      var bone1 = document.createElement('a-cylinder');
+      var bone1 = document.createElement('a-entity');
+      bone1.setAttribute('geometry', 'primitive: cylinder; radius: ' + (0.6 * thickness) + '; height: ' + (length));
       bone1.setAttribute('position', '0 -' + length + ' ' + (0.7 * thickness));
-      bone1.setAttribute('rotation', '0 0 0');
-      bone1.setAttribute('radius', 0.6 * thickness);
-      bone1.setAttribute('height', length);
-      bone1.setAttribute('color', '#FF0000');
+      bone1.setAttribute('mixin', 'red-metal');
       segment.appendChild(bone1);            
 
-      var bone2 = document.createElement('a-cylinder');
+      var bone2 = document.createElement('a-entity');
+      bone2.setAttribute('geometry', 'primitive: cylinder; radius: ' + (0.6 * thickness) + '; height: ' + (length));
       bone2.setAttribute('position', '0 -' + length + ' -' + (0.7 * thickness));
-      bone2.setAttribute('rotation', '0 0 0');
-      bone2.setAttribute('radius', 0.6 * thickness);
       bone2.setAttribute('height', length);
-      bone2.setAttribute('color', '#FF0000');
+      bone2.setAttribute('mixin', 'red-metal');
       segment.appendChild(bone2);            
 
       inParent.appendChild(segment);
@@ -284,11 +265,11 @@ function createArm(inParent, inName) {
       var bone = createLimbSegment(forearm, 'bone', 5, 0.4);
       bone.setAttribute('position', '0 2.5 0');
 
-      var hand = document.createElement('a-sphere');
-      hand.setAttribute('radius', 1);
+      var hand = document.createElement('a-entity');
+      hand.setAttribute('geometry', 'primitive: sphere; radius: 1');
       hand.setAttribute('data-name', 'hand');
       hand.setAttribute('position', '0 -5.7 0');
-      hand.setAttribute('color', '#FFC65D')
+      hand.setAttribute('mixin', 'yellow-metal')
       forearm.appendChild(hand);
 
       arm.appendChild(forearm);

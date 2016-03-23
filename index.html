@@ -12,9 +12,11 @@
       <a-mixin id='red-metal' material="color: red; src: url(moon.png)"></a-mixin>
       <a-mixin id='yellow-metal' material="color: #FFC65D; src: url(moon.png);"></a-mixin>
       <a-mixin id='gray-metal' material="color: #999999; src: url(moon.png)"></a-mixin>
+      <a-mixin id='white-light' material="color: #FFFFFF; transparent: true;" light="type: point; color: #FFF; intensity: 1.0" ></a-mixin>
     </a-assets>
     <a-scene id='scene'>
         <a-sky color="#222222"></a-sky>
+        <a-entity light="type: ambient; color: #999"></a-entity>
 
         <a-cube color="#888888" src='metal1.jpg' position='0 -20 0' width='40' height='5' depth='50'></a-cube>
         <a-cube color="#888888" src='metal1.jpg' position='50 -30 0' width='40' height='5' depth='50'></a-cube>
