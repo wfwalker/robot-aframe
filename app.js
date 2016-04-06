@@ -95,7 +95,7 @@ function createTank(inParent, inName) {
       topTorus.setAttribute('mixin', 'red-metal');
       tank.appendChild(topTorus);            
 
-      var bottomTorus = document.createElement('a-cylinder');
+      var bottomTorus = document.createElement('a-entity');
       bottomTorus.setAttribute('geometry', 'primitive: cylinder; radius: 1.1; height: 0.1');
       bottomTorus.setAttribute('position', '0 -3 0');
       bottomTorus.setAttribute('mixin', 'red-metal');
@@ -104,6 +104,7 @@ function createTank(inParent, inName) {
       inParent.appendChild(tank);
       return tank;
 }
+
 function createEye(inParent, inName) {
       var eye = document.createElement('a-entity');
       eye.setAttribute('data-name', inName);
@@ -116,7 +117,7 @@ function createEye(inParent, inName) {
 
 
       var light = document.createElement('a-entity');
-      light.setAttribute('geometry', 'primitive: sphere; radius: 0.4');
+      light.setAttribute('geometry', 'primitive: sphere; radius: 0.3');
       light.setAttribute('position', '0 0 -1.13');
       light.setAttribute('mixin', 'white-light');
       eye.appendChild(light);
